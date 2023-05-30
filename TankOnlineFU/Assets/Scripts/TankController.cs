@@ -3,6 +3,7 @@ using Entity;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class TankController : MonoBehaviour
 {
@@ -27,8 +28,11 @@ public class TankController : MonoBehaviour
             Hp = 10,
             Point = 0,
             Position = new Vector3(Random.Range(0, 20), Random.Range(0, 20), 0),
+          
             Guid = GUID.Generate()
         };
+
+        Debug.Log(_tank.Position);
         gameObject.transform.position = _tank.Position;
         _tankMover = gameObject.GetComponent<TankMover>();
         _cameraController = camera.GetComponent<CameraController>();
@@ -66,6 +70,7 @@ public class TankController : MonoBehaviour
     {
         _tank.Position = _tankMover.Move(direction);
         _tank.Direction = direction;
+        Debug.Log(_tank.Position);
         _cameraController.Move(_tank.Position);
         _renderer.sprite = direction switch
         {
