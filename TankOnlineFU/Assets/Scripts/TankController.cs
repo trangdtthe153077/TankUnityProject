@@ -19,6 +19,7 @@ public class TankController : MonoBehaviour
     private SpriteRenderer _renderer;
     public new GameObject camera;
 
+    public Transform position;
     private void Start()
     {
         _tank = new Tank
@@ -27,8 +28,8 @@ public class TankController : MonoBehaviour
             Direction = Direction.Down,
             Hp = 10,
             Point = 0,
-            Position = new Vector3(Random.Range(0, 20), Random.Range(0, 20), 0),
-          
+            /*    Position = new Vector3(Random.Range(0, 20), Random.Range(0, 20), 0),*/
+           Position = position.position,
             Guid = GUID.Generate()
         };
 
@@ -71,7 +72,7 @@ public class TankController : MonoBehaviour
         _tank.Position = _tankMover.Move(direction);
         _tank.Direction = direction;
         Debug.Log(_tank.Position);
-        _cameraController.Move(_tank.Position);
+        /*_cameraController.Move(_tank.Position);*/
         _renderer.sprite = direction switch
         {
             Direction.Down => tankDown,
