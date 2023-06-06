@@ -13,8 +13,10 @@ public class TankMover : MonoBehaviour
     private MapPainter mapPainter;
     public float speed;
 
+    Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         mapPainter = FindObjectOfType<MapPainter>();
         speed = 1;
     }
@@ -54,5 +56,6 @@ public class TankMover : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Day la " + mapPainter.GetTile(gameObject.transform));
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

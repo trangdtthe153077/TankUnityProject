@@ -31,15 +31,16 @@ public class TankController : MonoBehaviour
             Point = 0,
             /*    Position = new Vector3(Random.Range(0, 20), Random.Range(0, 20), 0),*/
            Position = position.position,
+           
             Guid = GUID.Generate()
         };
 
-        Debug.Log(_tank.Position);
+        Debug.Log("Position start"+ _tank.Position);
         gameObject.transform.position = _tank.Position;
         _tankMover = gameObject.GetComponent<TankMover>();
         _cameraController = camera.GetComponent<CameraController>();
         _renderer = gameObject.GetComponent<SpriteRenderer>();
-        Move(Direction.Down);
+  
     }
 
     // Update is called once per frame

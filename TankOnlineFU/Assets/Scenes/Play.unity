@@ -413,13 +413,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1369449567
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +544,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6433,11 +6433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1359508508166587173, guid: f92be833c566cbd4aa633c6ac8d954b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.165
+      value: -0.157
       objectReference: {fileID: 0}
     - target: {fileID: 1359508508166587173, guid: f92be833c566cbd4aa633c6ac8d954b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.765
+      value: -1.762
       objectReference: {fileID: 0}
     - target: {fileID: 1359508508166587173, guid: f92be833c566cbd4aa633c6ac8d954b7, type: 3}
       propertyPath: m_LocalPosition.z

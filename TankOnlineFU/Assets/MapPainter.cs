@@ -99,11 +99,26 @@ public class MapPainter : MonoBehaviour
     {
 
         Vector3Int cellPos = tileMap.WorldToCell(position.position);
-       
+        Debug.Log("Vector3" + cellPos);
         TileBase tileBase = tileMap.GetTile(cellPos);
         Debug.Log("Run this" +tileBase);
-        return tileMap.GetTile(cellPos);
+        return tileBase;
     }
+    public TileBase GetTileVector(Vector3Int position)
+    {
+
+      
+        TileBase tileBase = tileMap.GetTile(position);
+        Debug.Log("Run this" + tileBase);
+        return tileBase;
+    }
+    public void SetNullVector(Vector3Int position)
+    {
+
+        tileMap.SetTile(position, null);
+
+    }
+
 
     public void SetNull(Transform position)
     {

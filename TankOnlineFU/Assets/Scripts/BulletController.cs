@@ -67,8 +67,9 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var position = gameObject.transform;
-        Debug.Log("Tank pos: " + position.position+ " and Collision pos "+collision.gameObject.transform.position);
+
+    
+        Debug.Log("Tank pos: " + gameObject.transform.position+ " and Collision pos "+collision.gameObject.transform.position);
 
      /*   if(collision.gameObject.GetComponent<TankController>()==null)
         {
@@ -78,12 +79,34 @@ public class BulletController : MonoBehaviour
         Debug.Log("Collision with " + collision.gameObject.name);
 
         Tilemap tilemap = collision.gameObject.GetComponent<Tilemap>();
+       
+
         if (tilemap != null)
         {
-         
-            Debug.Log("Null or not");
-            TileBase tile = mapPainter.GetTile(position);
+            var position = tilemap.WorldToCell(gameObject.transform.position);
 
+            switch (Bullet.Direction)
+            {
+                case Direction.Down:
+                    position.y = position.y - 1;
+                    break;
+                case Direction.Up:
+                    position.y = position.y + 1;
+
+                    break;
+                case Direction.Left:
+                    position.x = position.x - 1;
+                    break;
+                case Direction.Right:
+                    position.x = position.x + 1;
+                    break;
+            }
+
+            Debug.Log("Null or not");
+            TileBase tile = mapPainter.GetTileVector(position);
+
+           
+      
             Debug.Log(tile);
             if (tile != null)
             {
@@ -104,7 +127,7 @@ public class BulletController : MonoBehaviour
                     if (tile == rockTile)
                     {
                         Debug.Log("Collided with a rock tile");
-                        mapPainter.SetNull(position); // Remove the tile
+                        mapPainter.SetNullVector(position); // Remove the tile
                         Destroy(gameObject);
                         break; // No need to check further if a match is found
                     }
