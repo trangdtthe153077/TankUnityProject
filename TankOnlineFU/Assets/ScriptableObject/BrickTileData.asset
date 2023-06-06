@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556243cade7271c43bbff68b00bffb36, type: 3}
+  m_Name: BrickTileData
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: dd257c9032cab2c45ad4df8137d39538, type: 2}
+  - {fileID: 11400000, guid: 7ce28bbc9e2474741903709d0cd2e94c, type: 2}
+  - {fileID: 11400000, guid: b91d829fa90f99a41a7670a2f11cf68a, type: 2}
+  - {fileID: 11400000, guid: 8e7ddf5421d7f6e41a619b5aa4d74f32, type: 2}
+  - {fileID: 11400000, guid: 633f69ba9bd24504c9477376750d3658, type: 2}
