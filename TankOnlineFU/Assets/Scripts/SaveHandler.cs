@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.IO;
 
 public class SaveHandler : MonoBehaviour
 {
@@ -15,25 +16,8 @@ public class SaveHandler : MonoBehaviour
     {
         InitTilemaps();
        // InitTileReferences();
+       OnLoad();
     }
-
-    //private void InitTileReferences()
-    //{
-    //    BuildingObjectBase[] buildables = Resources.LoadAll<BuildingObjectBase>("Scriptables/Buildables");
-
-    //    foreach (BuildingObjectBase buildable in buildables)
-    //    {
-    //        if (!tileBaseToBuildingObject.ContainsKey(buildable.TileBase))
-    //        {
-    //            tileBaseToBuildingObject.Add(buildable.TileBase, buildable);
-    //            guidToTileBase.Add(buildable.name, buildable.TileBase);
-    //        }
-    //        else
-    //        {
-    //            Debug.LogError("TileBase " + buildable.TileBase.name + " is already in use by " + tileBaseToBuildingObject[buildable.TileBase].name);
-    //        }
-    //    }
-    //}
 
     private void InitTilemaps()
     {
@@ -83,6 +67,21 @@ public class SaveHandler : MonoBehaviour
             data.Add(mapData);
         }
         FileHandler.SaveToJSON<TilemapData>(data, filename);
+        Application.LoadLevel("MainMenu");
+    }
+    public void OnReset()
+    {
+        // Clear all tilemaps first
+        foreach (var map in tilemaps.Values)
+        {
+            map.ClearAllTiles();
+        }
+
+        // Clear the JSON file: ghi một chuỗi rỗng vào file 
+        string path = Application.persistentDataPath + "/" + filename;
+        File.WriteAllText(path, "");
+
+        OnLoad();
     }
 
     public void OnLoad()
@@ -119,6 +118,7 @@ public class SaveHandler : MonoBehaviour
             }
         }
     }
+    
 }
 
 

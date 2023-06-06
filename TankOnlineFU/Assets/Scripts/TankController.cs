@@ -3,6 +3,7 @@ using Entity;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.PlayerSettings;
 
 public class TankController : MonoBehaviour
@@ -61,8 +62,9 @@ public class TankController : MonoBehaviour
             Move(Direction.Up);
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && SceneManager.GetActiveScene().name == "Play")
         {
+            
             Fire();
         }
     }
