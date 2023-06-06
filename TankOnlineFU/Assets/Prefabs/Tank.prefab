@@ -148,6 +148,7 @@ MonoBehaviour:
   tankLeft: {fileID: 21300000, guid: 13bdef6e50b2c4a339bafdc7f7f58ff4, type: 3}
   tankRight: {fileID: 21300000, guid: f59f1eac0661d4c9ba950e0e5d444b6d, type: 3}
   camera: {fileID: 0}
+  position: {fileID: 0}
 --- !u!114 &711902216727361652
 MonoBehaviour:
   m_ObjectHideFlags: 0

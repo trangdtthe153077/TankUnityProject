@@ -8,12 +8,17 @@ public class MapPainter : MonoBehaviour
 {
 
     public Tile grass;
-    public Tile rock;
+    public Tile water;
     public Tile brick;
     public Tile brick1;
     public Tile brick2;
     public Tile brick3;
     public Tile brick4;
+    public Tile steel;
+    public Tile steel1;
+    public Tile steel2;
+    public Tile steel3;
+    public Tile steel4;
 
     public Vector3Int position;
     public Transform tank_pos;
@@ -27,13 +32,19 @@ public class MapPainter : MonoBehaviour
     {
         tileMap.SetTile(position, grass);
         tileTypes.Add(grass);
-        tileTypes.Add(rock);
+        tileTypes.Add(water);
         tileTypes.Add(brick);
         tileTypes.Add(brick1);
         tileTypes.Add(brick2);
         tileTypes.Add(brick3);
         tileTypes.Add(brick4);
-  
+
+        tileTypes.Add(steel);
+        tileTypes.Add(steel1);
+        tileTypes.Add(steel2);
+        tileTypes.Add(steel3);
+        tileTypes.Add(steel4);
+
 
         selectedTile = tileTypes[currentTileIndex];
     }
@@ -78,7 +89,27 @@ public class MapPainter : MonoBehaviour
     public void PlaceTile(Vector3Int position)
     {
         // Instantiate the selected tile at the given position
-        tileMap.SetTile(tileMap.WorldToCell(tank_pos.transform.position), selectedTile);
+        tileMap.SetTile(position, selectedTile);
+        TileBase tileBase = tileMap.GetTile(position);
+        Debug.Log(tileBase);
+
+    }
+
+    public TileBase GetTile(Transform position)
+    {
+
+        Vector3Int cellPos = tileMap.WorldToCell(position.position);
        
+        TileBase tileBase = tileMap.GetTile(cellPos);
+        Debug.Log("Run this" +tileBase);
+        return tileMap.GetTile(cellPos);
+    }
+
+    public void SetNull(Transform position)
+    {
+
+        Vector3Int cellPos = tileMap.WorldToCell(position.position);
+        tileMap.SetTile(cellPos,null);
+     
     }
 }
