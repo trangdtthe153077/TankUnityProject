@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPause = false;
     public GameObject pauseMenuUI;
+
+    public GameObject audioMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ChangMusic()
     {
-
+        pauseMenuUI.SetActive(false);
+        audioMenu.SetActive(true);
     }
 }
