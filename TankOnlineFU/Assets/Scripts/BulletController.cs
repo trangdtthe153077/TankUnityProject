@@ -10,14 +10,20 @@ public class BulletController : MonoBehaviour
     [SerializeField] private TileData brickTileData;
     [SerializeField] private TileData rockTileData;
     public Bullet Bullet { get; set; }
+    public bool isEnemyBullet;
 
     public int MaxRange { get; set; }
 
     private MapPainter mapPainter;
+
+    SpawnManager spawnManager;
+    public GameObject explosiveAnimation;
     // Start is called before the first frame update
     private void Start()
     {
         mapPainter = FindObjectOfType<MapPainter>();
+        spawnManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
+
     }
 
     // Update is called once per frame
@@ -87,7 +93,7 @@ public class BulletController : MonoBehaviour
 
             switch (Bullet.Direction)
             {
-                case Direction.Down:
+           /*     case Direction.Down:
                     position.y = position.y - 1;
                     break;
                 case Direction.Up:
@@ -99,7 +105,7 @@ public class BulletController : MonoBehaviour
                     break;
                 case Direction.Right:
                     position.x = position.x + 1;
-                    break;
+                    break;*/
             }
 
             Debug.Log("Null or not");
@@ -117,6 +123,8 @@ public class BulletController : MonoBehaviour
                     if (tile == rockTile)
                     {
                         Debug.Log("Hit the rock");
+                        var a = Instantiate(explosiveAnimation, gameObject.transform.position, Quaternion.identity);
+                        Destroy(a, 1);
                         Destroy(gameObject);
                         break; // No need to check further if a match is found
                     }
@@ -128,6 +136,8 @@ public class BulletController : MonoBehaviour
                     {
                         Debug.Log("Collided with a rock tile");
                         mapPainter.SetNullVector(position); // Remove the tile
+                        var a = Instantiate(explosiveAnimation, gameObject.transform.position, Quaternion.identity);
+                        Destroy(a, 1);
                         Destroy(gameObject);
                         break; // No need to check further if a match is found
                     }
@@ -135,6 +145,85 @@ public class BulletController : MonoBehaviour
              
             }
         }
+
+       else if(collision.gameObject.tag=="Enemy")
+        {
+            var tank = Bullet.Tank;
+            if(tank!=null)
+            {
+
+                var a = Instantiate(explosiveAnimation, gameObject.transform.position, Quaternion.identity);
+                Destroy(a, 1);
+                Debug.Log("Dang ban enemy");
+
+            var enemy = collision.gameObject.GetComponent<EnemyController>();
+            Debug.Log("Quai mau: " + enemy._tank.Hp);
+                enemy._tank.Hp -= 5;
+         
+            if (enemy._tank.Hp <=0)
+            {
+              
+                Debug.Log("Quai chet");
+                Destroy(collision.gameObject);
+                spawnManager.liveEnemy -= 1;
+            }
+
+            }
+        }
+
+      else  if (collision.gameObject.tag == "Player")
+        {
+
+            Debug.Log("Ban trung xe tang");
+            var tank = Bullet.Tank;
+            Debug.Log("Tank 123 " + tank);
+            if (tank !=null)
+            {
+          
+            }
+            else
+            {
+                var a = Instantiate(explosiveAnimation, gameObject.transform.position,Quaternion.identity);
+                Destroy(a, 1);
+
+                var enemy = collision.gameObject.GetComponent<TankController>();
+                Debug.Log("Tank mau: " + enemy._tank.Hp);
+                enemy._tank.Hp -= 2;
+
+                if (enemy._tank.Hp <= 0)
+                {
+
+                    Debug.Log("Tank chet");
+                    spawnManager.TankDie();
+                }
+            } 
+                
+
+        }
+      else  if (collision.gameObject.tag == "Bullet")
+        {
+             Destroy(collision.gameObject);
+            Destroy(gameObject);
+
+            var a = Instantiate(explosiveAnimation, gameObject.transform);
+            Destroy(a, 1);
+
+        }
+
+        else if (collision.gameObject.tag == "base")
+        {
+
+            Debug.Log("Kill base");
+       
+                var a = Instantiate(explosiveAnimation, gameObject.transform.position, Quaternion.identity);
+                Destroy(a, 1);
+            spawnManager.KillBase();
+            Destroy(collision.gameObject);
+
+
+        }
+
+
     }
 
 }
