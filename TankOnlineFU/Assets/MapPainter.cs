@@ -14,6 +14,7 @@ public class MapPainter : MonoBehaviour
     public Tile brick2;
     public Tile brick3;
     public Tile brick4;
+    public Tile brick5;
     public Tile steel;
     public Tile steel1;
     public Tile steel2;
@@ -38,6 +39,7 @@ public class MapPainter : MonoBehaviour
         tileTypes.Add(brick2);
         tileTypes.Add(brick3);
         tileTypes.Add(brick4);
+        tileTypes.Add(brick5);
 
         tileTypes.Add(steel);
         tileTypes.Add(steel1);

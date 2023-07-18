@@ -9,7 +9,7 @@ using static UnityEditor.PlayerSettings;
 public class TankController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Tank _tank;
+    public Tank _tank;
 
     public Sprite tankUp;
     public Sprite tankDown;
@@ -20,7 +20,6 @@ public class TankController : MonoBehaviour
     private SpriteRenderer _renderer;
     public new GameObject camera;
 
-    public Transform position;
     private void Start()
     {
         _tank = new Tank
@@ -29,8 +28,8 @@ public class TankController : MonoBehaviour
             Direction = Direction.Down,
             Hp = 10,
             Point = 0,
-            /*    Position = new Vector3(Random.Range(0, 20), Random.Range(0, 20), 0),*/
-           Position = position.position,
+
+           Position = new Vector3(0,-1.8f,0),
            
             Guid = GUID.Generate()
         };
@@ -44,7 +43,7 @@ public class TankController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
