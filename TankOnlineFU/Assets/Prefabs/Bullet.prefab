@@ -149,4 +149,6 @@ MonoBehaviour:
   brickTileData: {fileID: 11400000, guid: 6eba5c4f9e9483e44a1c420f73f22542, type: 2}
   rockTileData: {fileID: 11400000, guid: 8c81310d2834abb4398097fe905bed25, type: 2}
   isEnemyBullet: 0
+  coinPrefab: {fileID: 2418964325485232609, guid: 1b1afacecfc63374a9837ba65ffc49cf, type: 3}
+  coinCount: 1
   explosiveAnimation: {fileID: 8076293393061467464, guid: c9ba99bfa03af724fab4204d1bc41989, type: 3}
