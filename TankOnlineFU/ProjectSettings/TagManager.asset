@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - bullet
   - bulletEnemy
+  - Manager
+  - base
+  - base_destroyed
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class TankMover : MonoBehaviour
 
     private MapPainter mapPainter;
     public float speed;
-
+    public Direction currentMove;
     Rigidbody2D rb;
     void Start()
     {
@@ -34,15 +34,19 @@ public class TankMover : MonoBehaviour
         {
             case Direction.Down:
                 currentPos.y -= speed * Time.deltaTime;
+                currentMove = Direction.Down;
                 break;
             case Direction.Left:
                 currentPos.x -= speed * Time.deltaTime;
+                currentMove = Direction.Left;
                 break;
             case Direction.Right:
                 currentPos.x += speed * Time.deltaTime;
+                currentMove = Direction.Right;
                 break;
             case Direction.Up:
                 currentPos.y += speed * Time.deltaTime;
+                currentMove = Direction.Up;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
@@ -53,9 +57,10 @@ public class TankMover : MonoBehaviour
     }
 
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Day la " + mapPainter.GetTile(gameObject.transform));
+      /*  Debug.Log("Day la " + mapPainter.GetTile(gameObject.transform));*/
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

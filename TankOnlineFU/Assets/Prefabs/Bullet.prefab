@@ -148,3 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickTileData: {fileID: 11400000, guid: 6eba5c4f9e9483e44a1c420f73f22542, type: 2}
   rockTileData: {fileID: 11400000, guid: 8c81310d2834abb4398097fe905bed25, type: 2}
+  isEnemyBullet: 0
+  explosiveAnimation: {fileID: 8076293393061467464, guid: c9ba99bfa03af724fab4204d1bc41989, type: 3}
