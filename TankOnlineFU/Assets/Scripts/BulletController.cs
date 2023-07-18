@@ -16,6 +16,10 @@ public class BulletController : MonoBehaviour
 
     private MapPainter mapPainter;
 
+    public GameObject coinPrefab;
+    public int coinCount = 1;
+    GoldManager goldManager;
+
     SpawnManager spawnManager;
     public GameObject explosiveAnimation;
     // Start is called before the first frame update
@@ -23,7 +27,7 @@ public class BulletController : MonoBehaviour
     {
         mapPainter = FindObjectOfType<MapPainter>();
         spawnManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
-
+        goldManager = GameObject.FindWithTag("Gold").GetComponent<GoldManager>();
     }
 
     // Update is called once per frame
@@ -162,7 +166,10 @@ public class BulletController : MonoBehaviour
          
             if (enemy._tank.Hp <=0)
             {
-              
+                coinCount = 10;
+                var b = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                goldManager.addGold(coinCount);
+                Destroy(b, 0.8f);
                 Debug.Log("Quai chet");
                 Destroy(collision.gameObject);
                 spawnManager.liveEnemy -= 1;
