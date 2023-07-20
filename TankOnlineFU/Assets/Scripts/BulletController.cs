@@ -24,6 +24,7 @@ public class BulletController : MonoBehaviour
 
 
     SpawnManager spawnManager;
+    SpawnTarget spawnTarget;
     public GameObject explosiveAnimation;
     // Start is called before the first frame update
 
@@ -31,6 +32,8 @@ public class BulletController : MonoBehaviour
     {
         mapPainter = FindObjectOfType<MapPainter>();
         spawnManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
+     
+        spawnTarget = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnTarget>();
 
     }
 
@@ -185,8 +188,39 @@ public class BulletController : MonoBehaviour
 
             }
         }
+        else if (collision.gameObject.tag == "EnemyTarget")
+        {
+            var tank = Bullet.Tank;
+            if (tank != null)
+            {
 
-      else  if (collision.gameObject.tag == "Player")
+                var a = Instantiate(explosiveAnimation, gameObject.transform.position, Quaternion.identity);
+                Destroy(a, 1);
+                Debug.Log("Dang ban enemy");
+
+                var enemy = collision.gameObject.GetComponent<EnemyTarget>();
+                Debug.Log("Quai mau: " + enemy._tank.Hp);
+                enemy._tank.Hp -= 5;
+
+                if (enemy._tank.Hp <= 0)
+                {
+                    coinCount = 10;
+                    var b = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+
+
+                    Destroy(b, 0.8f);
+                    StaticManager.point++;
+                    StaticManager.currentGold += coinCount;
+                    Debug.Log("Quai chet");
+                    Destroy(collision.gameObject);
+                    spawnTarget.liveEnemy -= 1;
+              
+                }
+
+            }
+        }
+
+        else  if (collision.gameObject.tag == "Player")
         {
 
             Debug.Log("Ban trung xe tang");
@@ -209,7 +243,14 @@ public class BulletController : MonoBehaviour
                 {
 
                     Debug.Log("Tank chet");
-                    spawnManager.TankDie();
+                    if(spawnManager!=null)
+                    {
+                        spawnManager.TankDie();
+
+                    }
+                    if(spawnTarget!=null)
+                    { spawnTarget.TankDie(); }
+
                 }
             } 
                 
@@ -236,6 +277,38 @@ public class BulletController : MonoBehaviour
             Destroy(collision.gameObject);
 
 
+        }
+
+        else if (collision.gameObject.tag == "Boss")
+        {
+            var tank = Bullet.Tank;
+            if (tank != null)
+            {
+
+                var a = Instantiate(explosiveAnimation, gameObject.transform.position, Quaternion.identity);
+                Destroy(a, 1);
+                Debug.Log("Dang ban enemy");
+
+                var enemy = collision.gameObject.GetComponent<Boss>();
+                Debug.Log("Quai mau: " + enemy._tank.Hp);
+                enemy._tank.Hp -= 5;
+
+                if (enemy._tank.Hp <= 0)
+                {
+                    coinCount = 1000;
+                    var b = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+
+
+                    Destroy(b, 0.8f);
+                    StaticManager.point++;
+                    StaticManager.currentGold += coinCount;
+                    Debug.Log("Quai chet");
+                    Destroy(collision.gameObject);
+                    spawnTarget.WinGame();
+                    Debug.Log("Live enemy: " + spawnManager.liveEnemy);
+                }
+
+            }
         }
 
 

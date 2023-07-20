@@ -7,7 +7,7 @@ using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnTarget : MonoBehaviour
 {
     [HideInInspector] public int liveEnemy;
     [HideInInspector] public float bulletTime;
@@ -61,10 +61,10 @@ public class SpawnManager : MonoBehaviour
         /*     bulletTime -= Time.deltaTime;*/
         SpawnEnemyTank();
         countTime += Time.deltaTime;
-        if(countTime > 3f)
+        if(countTime > 5f)
         {
             born = true;
-
+            SpawnEnemyTank();
         }    
 
         if(loose==true)
@@ -81,21 +81,15 @@ public class SpawnManager : MonoBehaviour
     public void SpawnEnemyTank()
     {
 
-        if(liveEnemy == 0)
-        {
-            Instantiate(enemy, Pos1, Quaternion.identity);
-            Instantiate(enemy, Pos2, Quaternion.identity);
-            Instantiate(enemy, Pos3, Quaternion.identity);
-        }    
-
-
         if (enemyBorn < totalEnemy)
         {
             //print("Tank No " + enemyBorn + " type " + enemyQueue[enemyBorn] + " born at " + enemyBorn % 3);
             
             if(born==true)
             {
-                var a = Instantiate(enemy, RandomTransform(), Quaternion.identity);
+                Instantiate(enemy, Pos1, Quaternion.identity);
+                Instantiate(enemy, Pos2, Quaternion.identity);
+                Instantiate(enemy, Pos3, Quaternion.identity);
                 countTime = 0;
                 enemyBorn++;
                 born = false;
@@ -172,7 +166,7 @@ public class SpawnManager : MonoBehaviour
     public void WinGame()
     {
         Debug.Log("Da giet het quai");
-/*        Application.LoadLevel("SummaryScene");*/
+      Application.LoadLevel("SummaryScene");
     }
 
 

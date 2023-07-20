@@ -12,6 +12,9 @@ TagManager:
   - base_destroyed
   - Gold
   - TankManager
+  - SpawnManager
+  - Boss
+  - EnemyTarget
   layers:
   - Default
   - TransparentFX

@@ -52,8 +52,20 @@ public class TankController : MonoBehaviour
         _tankMover = gameObject.GetComponent<TankMover>();
         _cameraController = camera.GetComponent<CameraController>();
         _renderer = gameObject.GetComponent<SpriteRenderer>();
-    /*    tankManager = GameObject.FindGameObjectWithTag("TankManager").GetComponent<TankManager>();
-        tankManager.SetTank();*/
+    tankManager = GameObject.FindGameObjectWithTag("TankManager").GetComponent<TankManager>();
+        tankManager.SetTank();
+
+   
+    }
+    private void Start()
+    {
+        if (StaticManager.currentTank == 2)
+        {
+            Debug.Log("Tank fast " +_tankMover.speed);
+            _tankMover.SetSpeed(3);
+          /*  _tankMover.speed = 3;*/
+           
+        }
     }
 
     // Update is called once per frame
@@ -90,11 +102,12 @@ public class TankController : MonoBehaviour
             Move(Direction.Up);
         }
 
-        if (Input.GetKey(KeyCode.Space) && SceneManager.GetActiveScene().name == "Play")
+        if (Input.GetKey(KeyCode.Space) && SceneManager.GetActiveScene().name == "Play" || SceneManager.GetActiveScene().name == "Boss")
         {
             
             Fire();
         }
+
     }
 
     private void Move(Direction direction)

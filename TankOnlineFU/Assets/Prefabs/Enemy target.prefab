@@ -135,14 +135,14 @@ GameObject:
   - component: {fileID: 353604643620958008}
   - component: {fileID: 1104279190621613927}
   - component: {fileID: 1445588235494078850}
-  - component: {fileID: -1362720108294052016}
   - component: {fileID: -6242935610763960146}
   - component: {fileID: 1811540862}
   - component: {fileID: 1811540857}
   - component: {fileID: 1811540870}
+  - component: {fileID: 5283247806761591867}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Enemy
+  m_Name: Enemy target
+  m_TagString: EnemyTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,31 +244,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &-1362720108294052016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2178223789173475439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a39883fe1430543f492e352fc7209104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tankUp: {fileID: 21300000, guid: dcb965d93e3d74aa4a4d1a96f10103b9, type: 3}
-  tankDown: {fileID: 21300000, guid: 2555fa61700434466ae3a26a9fe66df0, type: 3}
-  tankLeft: {fileID: 21300000, guid: 12ab9f9eed1094c54945e97669ccae02, type: 3}
-  tankRight: {fileID: 21300000, guid: d1e5bfe0793af45329ebdc66aef22b6f, type: 3}
-  camera: {fileID: 5127169775388327061, guid: f92be833c566cbd4aa633c6ac8d954b7, type: 3}
-  position: {fileID: 0}
-  frontLeft: {fileID: 1748362451}
-  frontRight: {fileID: 1935692614}
-  frontUp: {fileID: 834799834}
-  frontDown: {fileID: 796928380}
-  brickTileData: {fileID: 11400000, guid: 6eba5c4f9e9483e44a1c420f73f22542, type: 2}
-  rockTileData: {fileID: 11400000, guid: 8c81310d2834abb4398097fe905bed25, type: 2}
-  type: 0
 --- !u!114 &-6242935610763960146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,3 +322,28 @@ MonoBehaviour:
   maxRange: 0
   delay: 0
   lastFire: 0
+--- !u!114 &5283247806761591867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178223789173475439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d67b8f3c69e48459a75f7876425634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankUp: {fileID: 21300000, guid: dcb965d93e3d74aa4a4d1a96f10103b9, type: 3}
+  tankDown: {fileID: 21300000, guid: 2555fa61700434466ae3a26a9fe66df0, type: 3}
+  tankLeft: {fileID: 21300000, guid: 12ab9f9eed1094c54945e97669ccae02, type: 3}
+  tankRight: {fileID: 21300000, guid: d1e5bfe0793af45329ebdc66aef22b6f, type: 3}
+  camera: {fileID: 0}
+  position: {fileID: 0}
+  frontLeft: {fileID: 0}
+  frontRight: {fileID: 0}
+  frontUp: {fileID: 0}
+  frontDown: {fileID: 0}
+  brickTileData: {fileID: 11400000, guid: 6eba5c4f9e9483e44a1c420f73f22542, type: 2}
+  rockTileData: {fileID: 11400000, guid: 8c81310d2834abb4398097fe905bed25, type: 2}
+  player: {fileID: 0}

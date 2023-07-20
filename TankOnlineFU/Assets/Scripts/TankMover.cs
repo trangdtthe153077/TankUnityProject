@@ -11,14 +11,35 @@ public class TankMover : MonoBehaviour
     // Start is called before the first frame update
 
     private MapPainter mapPainter;
-    public float speed;
+    public float speed=1;
     public Direction currentMove;
     Rigidbody2D rb;
+    public GameObject player;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         mapPainter = FindObjectOfType<MapPainter>();
         speed = 1;
+        var controller = gameObject.GetComponent<TankController>();
+        if(controller != null && StaticManager.currentTank==2)
+        {
+            speed = 3;
+        }
+        if (controller != null && StaticManager.currentTank == 3)
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+          var  spriteRenderer = gameObject.GetComponent<Renderer>();
+
+            // Set the sorting order to the desired value
+            spriteRenderer.sortingOrder = 2;
+        }
+        if (controller != null && StaticManager.currentTank == 4)
+        {
+            controller._tank.Hp = 10000;
+        }
+
+
+
     }
 
     // Update is called once per frame
@@ -26,6 +47,10 @@ public class TankMover : MonoBehaviour
     {
     }
 
+    public void SetSpeed(int s)
+    {
+        speed = s;
+    }    
 
     public Vector3 Move(Direction direction)
     {

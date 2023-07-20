@@ -78,7 +78,7 @@ public class TankManager : MonoBehaviour
         else if (StaticManager.currentTank == 2)
         {
 
-
+            GameObject.FindGameObjectWithTag("Player").GetComponent<TankMover>().SetSpeed(3);
             controller.tankUp = tankUp2;
             controller.tankDown = tankDown2;
             controller.tankLeft = tankLeft2;
