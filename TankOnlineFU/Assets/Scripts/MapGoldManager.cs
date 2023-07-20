@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class MapGoldManager : MonoBehaviour
 {
-    public static int mapgold;
+
     public TextMeshProUGUI mapgoldtxext;
+    public TextMeshProUGUI pointtext;
 
     // Start is called before the first frame update
     void Start()
@@ -17,20 +18,10 @@ public class MapGoldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mapgoldtxext.text = mapgold.ToString();
+        pointtext.text = StaticManager.point.ToString();
+        mapgoldtxext.text = StaticManager.point * 10 + "";
 
     }
 
-    public int getGold()
-    {
-        return mapgold;
-    }
-    public void setGold()
-    {
-    }
-    public void addGold(int gold)
-    {
-        mapgold += gold;
-        mapgoldtxext.text = mapgold.ToString();
-    }
+
 }

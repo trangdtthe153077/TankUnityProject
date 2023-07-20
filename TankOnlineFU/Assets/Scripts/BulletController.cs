@@ -19,8 +19,7 @@ public class BulletController : MonoBehaviour
 
     public GameObject coinPrefab;
     public int coinCount = 1;
-    GoldManager goldManager;
-    MapGoldManager mgoldManager;
+ 
 
 
 
@@ -32,8 +31,7 @@ public class BulletController : MonoBehaviour
     {
         mapPainter = FindObjectOfType<MapPainter>();
         spawnManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
-        goldManager = GameObject.FindWithTag("Gold").GetComponent<GoldManager>();
-        mgoldManager = GameObject.FindWithTag("Gold").GetComponent<MapGoldManager>();
+
     }
 
     // Update is called once per frame
@@ -174,10 +172,11 @@ public class BulletController : MonoBehaviour
             {
                 coinCount = 10;
                 var b = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                mgoldManager.addGold(coinCount);
-                goldManager.addGold(coinCount);
+        
+               
                 Destroy(b, 0.8f);
                 StaticManager.point++;
+                    StaticManager.currentGold += coinCount;
                 Debug.Log("Quai chet");
                 Destroy(collision.gameObject);
                 spawnManager.liveEnemy -= 1;

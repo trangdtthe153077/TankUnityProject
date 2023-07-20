@@ -13,7 +13,7 @@ public class Menu : MonoBehaviour
     public void Btn_Play()
     {
         Application.LoadLevel("MapSelected");
-        mgoldManager.mapgold = 0;
+ 
     }
     public void Btn_Construction()
     {

@@ -26,9 +26,11 @@ public class SpawnManager : MonoBehaviour
     public TankController tank;
 
     public float countTime;
+    public float openNewSceneTime;
     bool born=false;
    public Canvas looseScreen;
     public GameObject baseDestroyed;
+    bool loose = false;
     private void Awake()
     {
       
@@ -64,6 +66,14 @@ public class SpawnManager : MonoBehaviour
             born = true;
 
         }    
+
+        if(loose=true)
+        {
+            openNewSceneTime+=Time.deltaTime;
+            if(openNewSceneTime > 10)
+            { SwitchScene(); }
+
+        }
     }
 
 
@@ -151,13 +161,18 @@ public class SpawnManager : MonoBehaviour
     {
         Debug.Log("Thua ket thuc game");
         looseScreen.gameObject.SetActive(true);
+        loose = true;
+      
+    }
+    public void SwitchScene()
+    {
         Application.LoadLevel("SummaryScene");
     }
 
     public void WinGame()
     {
         Debug.Log("Da giet het quai");
-        Application.LoadLevel("SummaryScene");
+/*        Application.LoadLevel("SummaryScene");*/
     }
 
 

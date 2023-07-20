@@ -123,9 +123,9 @@ public class TankManager : MonoBehaviour
     {
         if (StaticManager.bool2 != true)
         {
-            if (GoldManager.currnetGold >= 100)
+            if (StaticManager.currentGold >= 100)
             {
-                GoldManager.currnetGold -= 100;
+                StaticManager.currentGold -= 100;
                 StaticManager.bool2 = true;
             }
           
@@ -141,9 +141,9 @@ public class TankManager : MonoBehaviour
     {
         if (StaticManager.bool3 != true)
         {
-            if (GoldManager.currnetGold >= 200)
+            if (StaticManager.currentGold >= 200)
             {
-                GoldManager.currnetGold -= 200;
+                StaticManager.currentGold -= 200;
                 StaticManager.bool3 = true;
             }
        
@@ -158,9 +158,9 @@ public class TankManager : MonoBehaviour
     {
         if (StaticManager.bool4 != true)
         {
-            if (GoldManager.currnetGold >= 400)
+            if (StaticManager.currentGold >= 400)
             {
-                GoldManager.currnetGold -= 400;
+                StaticManager.currentGold -= 400;
                 StaticManager.bool4 = true;
             }
        

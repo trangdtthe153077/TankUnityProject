@@ -81,6 +81,7 @@ public class SaveHandler : MonoBehaviour
 
     public void BackToMenu()
     {
+        StaticManager.point = 0;
         Application.LoadLevel("MainMenu");
     }    
     public void OnReset()
