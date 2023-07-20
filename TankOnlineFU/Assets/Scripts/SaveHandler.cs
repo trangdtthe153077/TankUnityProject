@@ -78,6 +78,11 @@ public class SaveHandler : MonoBehaviour
             Application.LoadLevel("MainMenu");
         }
     }
+
+    public void BackToMenu()
+    {
+        Application.LoadLevel("MainMenu");
+    }    
     public void OnReset()
     {
         // Clear all tilemaps first
