@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1951879935812767264, guid: 1b1afacecfc63374a9837ba65ffc49cf, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1951879935812767264, guid: 1b1afacecfc63374a9837ba65ffc49cf, type: 3}
       propertyPath: m_LocalScale.x
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1951879935812767264, guid: 1b1afacecfc63374a9837ba65ffc49cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18
+      value: -27.7
       objectReference: {fileID: 0}
     - target: {fileID: 1951879935812767264, guid: 1b1afacecfc63374a9837ba65ffc49cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -736,15 +736,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1675529326}
   - {fileID: 100786734}
+  - {fileID: 1675529326}
   m_Father: {fileID: 2001139996}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -326.80994, y: 162.62}
-  m_SizeDelta: {x: -777.51, y: -350.59}
+  m_AnchoredPosition: {x: -315.3401, y: 162.62}
+  m_SizeDelta: {x: -754.57, y: -350.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &581866852
 MonoBehaviour:
@@ -7950,12 +7950,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 581866851}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.77, y: -0.0024897}
-  m_SizeDelta: {x: 28.95, y: 40.205}
+  m_AnchoredPosition: {x: 15.37, y: -0.0024897}
+  m_SizeDelta: {x: 51.89, y: 40.205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675529327
 MonoBehaviour:
@@ -7979,8 +7979,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c1b24b232b52627408dc0b5c0984d8df, type: 2}
+  m_sharedMaterial: {fileID: -6184772114728021752, guid: c1b24b232b52627408dc0b5c0984d8df, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8096,8 +8096,8 @@ GameObject:
   - component: {fileID: 2001139996}
   - component: {fileID: 2001139995}
   - component: {fileID: 2001139994}
-  - component: {fileID: 2001139993}
   - component: {fileID: 2001139997}
+  - component: {fileID: 2001139993}
   m_Layer: 5
   m_Name: GoldBar
   m_TagString: Gold
@@ -8196,10 +8196,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2001139992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe73079010170cd43a08d8c470fbf0a5, type: 3}
+  m_Script: {fileID: 11500000, guid: cd61635a2c2fe0a478330fba167846e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldtxext: {fileID: 1675529327}
 --- !u!1 &2034241504
 GameObject:
   m_ObjectHideFlags: 0

@@ -151,11 +151,13 @@ public class SpawnManager : MonoBehaviour
     {
         Debug.Log("Thua ket thuc game");
         looseScreen.gameObject.SetActive(true);
+        Application.LoadLevel("SummaryScene");
     }
 
     public void WinGame()
     {
         Debug.Log("Da giet het quai");
+        Application.LoadLevel("SummaryScene");
     }
 
 

@@ -4,35 +4,33 @@ using TMPro;
 using UnityEngine;
 
 
-public class GoldManager : MonoBehaviour
+public class MapGoldManager : MonoBehaviour
 {
-    public static int currnetGold;
-    public TextMeshProUGUI goldtxext;
+    public static int mapgold;
+    public TextMeshProUGUI mapgoldtxext;
+
     // Start is called before the first frame update
     void Start()
     {
-        currnetGold = 500;
     }
 
     // Update is called once per frame
     void Update()
     {
-        goldtxext.text = currnetGold.ToString();
+        mapgoldtxext.text = mapgold.ToString();
 
     }
 
     public int getGold()
     {
-        return currnetGold;
+        return mapgold;
     }
     public void setGold()
     {
     }
     public void addGold(int gold)
     {
-        currnetGold += gold;
-        goldtxext.text = currnetGold.ToString();
+        mapgold += gold;
+        mapgoldtxext.text = mapgold.ToString();
     }
-
 }
-
