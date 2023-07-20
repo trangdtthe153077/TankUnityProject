@@ -4,19 +4,23 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.IO;
+using UnityEngine.UI;
+using TMPro;
+using System.Net.NetworkInformation;
 
 public class SaveHandler : MonoBehaviour
 {
     Dictionary<string, Tilemap> tilemaps = new Dictionary<string, Tilemap>();
 
     [SerializeField] BoundsInt bounds;
-    [SerializeField] string filename = "tilemapData.json";
-
+    [SerializeField] public TMP_InputField stageInput;
+    public int maxCharacterLimit = 12;
     private void Start()
     {
         InitTilemaps();
-       // InitTileReferences();
-       OnLoad();
+        // InitTileReferences();
+        stageInput.characterLimit = maxCharacterLimit;
+
     }
 
     private void InitTilemaps()
@@ -66,8 +70,15 @@ public class SaveHandler : MonoBehaviour
             // Add "TilemapData" Object to List
             data.Add(mapData);
         }
-        FileHandler.SaveToJSON<TilemapData>(data, filename);
-        Application.LoadLevel("MainMenu");
+        //Debug.Log("Stage Inputfield: " + stageInput.text);
+        if (stageInput != null && stageInput.text.Length > 0)
+        {
+            string filename = stageInput.text + ".json";
+            FileHandler.SaveToJSON<TilemapData>(data, filename);
+            string path = Path.Combine(Application.persistentDataPath, filename);
+            //Debug.Log(path);
+            Application.LoadLevel("MainMenu");
+        }
     }
     public void OnReset()
     {
@@ -77,52 +88,14 @@ public class SaveHandler : MonoBehaviour
             map.ClearAllTiles();
         }
 
-        // Clear the JSON file: ghi một chuỗi rỗng vào file 
-        string path = Application.persistentDataPath + "/" + filename;
-        File.WriteAllText(path, "");
+        //string stageName = PlayerPrefs.GetString("StageName");
+        //string filename = stageName + ".json";
+        //// Clear the JSON file: ghi một chuỗi rỗng vào file 
+        //string path = Application.persistentDataPath + "/" + filename;
+        //File.WriteAllText(path, "");
 
-        OnLoad();
+        //OnLoad();
     }
-
-    public void BackMenu()
-    {
-        Application.LoadLevel("MainMenu");
-    }    
-    public void OnLoad()
-    {
-        // Clear all tilemaps first
-        foreach (var map in tilemaps.Values)
-        {
-            map.ClearAllTiles();
-        }
-        List<TilemapData> data = FileHandler.ReadListFromJSON<TilemapData>(filename);
-
-        foreach (var mapData in data)
-        {
-            // if key does NOT exist in dictionary skip it
-            if (!tilemaps.ContainsKey(mapData.key))
-            {
-                Debug.LogError("Found saved data for tilemap called '" + mapData.key + "', but Tilemap does not exist in scene.");
-                continue;
-            }
-
-            // get according map
-            var map = tilemaps[mapData.key];
-
-            // clear map
-            map.ClearAllTiles();
-
-            if (mapData.tiles != null && mapData.tiles.Count > 0)
-            {
-                foreach (TileInfo tile in mapData.tiles)
-                {
-                    map.SetTile(tile.position, tile.tile);
-                    //Debug.LogError("position: " + tile.position + ", tile: "+ tile.tile);
-                }
-            }
-        }
-    }
-    
 }
 
 
@@ -142,6 +115,6 @@ public class TileInfo
     public TileInfo(TileBase tile, Vector3Int pos)
     {
         this.tile = tile;
-        position = pos; 
+        position = pos;
     }
 }
