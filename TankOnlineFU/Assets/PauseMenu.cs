@@ -55,4 +55,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         audioMenu.SetActive(true);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
