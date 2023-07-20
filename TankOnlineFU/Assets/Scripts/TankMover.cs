@@ -39,19 +39,21 @@ public class TankMover : MonoBehaviour
             case Direction.Left:
                 currentPos.x -= speed * Time.deltaTime;
                 currentMove = Direction.Left;
+
                 break;
             case Direction.Right:
                 currentPos.x += speed * Time.deltaTime;
                 currentMove = Direction.Right;
+
                 break;
             case Direction.Up:
                 currentPos.y += speed * Time.deltaTime;
                 currentMove = Direction.Up;
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
         }
-
         gameObject.transform.position = currentPos;
         return currentPos;
     }
