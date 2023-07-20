@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Entity;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class BulletController : MonoBehaviour
 {
@@ -19,15 +20,20 @@ public class BulletController : MonoBehaviour
     public GameObject coinPrefab;
     public int coinCount = 1;
     GoldManager goldManager;
+    MapGoldManager mgoldManager;
+
+
 
     SpawnManager spawnManager;
     public GameObject explosiveAnimation;
     // Start is called before the first frame update
+
     private void Awake()
     {
         mapPainter = FindObjectOfType<MapPainter>();
         spawnManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
         goldManager = GameObject.FindWithTag("Gold").GetComponent<GoldManager>();
+        mgoldManager = GameObject.FindWithTag("Gold").GetComponent<MapGoldManager>();
     }
 
     // Update is called once per frame
@@ -168,8 +174,10 @@ public class BulletController : MonoBehaviour
             {
                 coinCount = 10;
                 var b = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                mgoldManager.addGold(coinCount);
                 goldManager.addGold(coinCount);
                 Destroy(b, 0.8f);
+                StaticManager.point++;
                 Debug.Log("Quai chet");
                 Destroy(collision.gameObject);
                 spawnManager.liveEnemy -= 1;

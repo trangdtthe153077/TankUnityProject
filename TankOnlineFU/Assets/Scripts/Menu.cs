@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-
+    MapGoldManager mgoldManager;
     public Canvas canvas;
 
     public void Start()
@@ -13,6 +13,7 @@ public class Menu : MonoBehaviour
     public void Btn_Play()
     {
         Application.LoadLevel("MapSelected");
+        mgoldManager.mapgold = 0;
     }
     public void Btn_Construction()
     {
