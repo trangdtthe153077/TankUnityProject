@@ -502,7 +502,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 1.9711139
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1236,13 +1236,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369449567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e172598a1870bf43955c71c3c524496, type: 3}
+  m_Script: {fileID: 11500000, guid: c2ac8739e801e714f848803380ca3093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bounds:
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Size: {x: 0, y: 0, z: 0}
-  filename: 
+    m_Position: {x: -13, y: -7, z: 0}
+    m_Size: {x: 26, y: 14, z: 0}
+  filename: tilemapData.json
 --- !u!114 &1369449571
 MonoBehaviour:
   m_ObjectHideFlags: 0
