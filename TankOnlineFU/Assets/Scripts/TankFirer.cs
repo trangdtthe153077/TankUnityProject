@@ -10,6 +10,8 @@ namespace DefaultNamespace
         public Sprite spriteRight;
         public Sprite spriteLeft;
         public Sprite spriteUp;
+
+        public AudioSource sound_fire;
         public Sprite spriteDown;
         public int speed;
         public int maxRange;
@@ -37,6 +39,8 @@ namespace DefaultNamespace
             var rigidBody2d = bullet.GetComponent<Rigidbody2D>();
             var bulletController = bullet.GetComponent<BulletController>();
             bulletController.Bullet = b;
+            sound_fire.Play();
+
             bulletController.MaxRange = maxRange;
             Vector2 force;
             switch (b.Direction)
