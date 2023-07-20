@@ -61,6 +61,6 @@ public class TankMover : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
       /*  Debug.Log("Day la " + mapPainter.GetTile(gameObject.transform));*/
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    /*    rb.constraints = RigidbodyConstraints2D.FreezeRotation;*/
     }
 }
