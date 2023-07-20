@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
     }
     public void Btn_Play()
     {
-        Application.LoadLevel("Play");
+        Application.LoadLevel("MapSelected");
     }
     public void Btn_Construction()
     {
