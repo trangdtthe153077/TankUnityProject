@@ -23,7 +23,7 @@ public class BulletController : MonoBehaviour
     SpawnManager spawnManager;
     public GameObject explosiveAnimation;
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         mapPainter = FindObjectOfType<MapPainter>();
         spawnManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
