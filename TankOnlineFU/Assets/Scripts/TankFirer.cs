@@ -11,6 +11,7 @@ namespace DefaultNamespace
         public Sprite spriteLeft;
         public Sprite spriteUp;
         public Sprite spriteDown;
+        public AudioSource sound_fire;
         public int speed;
         public int maxRange;
         public float delay;
@@ -39,6 +40,7 @@ namespace DefaultNamespace
             bulletController.Bullet = b;
             bulletController.MaxRange = maxRange;
             Vector2 force;
+            sound_fire.Play();
             switch (b.Direction)
             {
                 case Direction.Down:
