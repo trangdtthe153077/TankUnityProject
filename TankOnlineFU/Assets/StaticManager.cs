@@ -5,8 +5,8 @@ using UnityEngine;
 public class StaticManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static int currentTank = 0;
-    public static bool bool1, bool2, bool3 , bool4 ;
+    public static int currentTank = 1;
+    public static bool bool1=true, bool2, bool3 , bool4 ;
     void Start()
     {
         
