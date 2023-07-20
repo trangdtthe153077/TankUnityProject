@@ -97,7 +97,7 @@ public class BulletController : MonoBehaviour
 
             switch (Bullet.Direction)
             {
-           /*     case Direction.Down:
+              case Direction.Down:
                     position.y = position.y - 1;
                     break;
                 case Direction.Up:
@@ -109,7 +109,7 @@ public class BulletController : MonoBehaviour
                     break;
                 case Direction.Right:
                     position.x = position.x + 1;
-                    break;*/
+                    break;
             }
 
             Debug.Log("Null or not");

@@ -40,29 +40,37 @@ public class TankController : MonoBehaviour
             Guid = GUID.Generate()
         };
 
-        shield1 = Instantiate(shield, gameObject.transform.position, transform.rotation);
-        Destroy(shield1, 3);
+        if(shield != null)
+        {
+            shield1 = Instantiate(shield, gameObject.transform.position, transform.rotation);
+            Destroy(shield1, 3);
+        }    
+    
 
         Debug.Log("Position start"+ _tank.Position);
         gameObject.transform.position = _tank.Position;
         _tankMover = gameObject.GetComponent<TankMover>();
         _cameraController = camera.GetComponent<CameraController>();
         _renderer = gameObject.GetComponent<SpriteRenderer>();
-        tankManager = GameObject.FindGameObjectWithTag("TankManager").GetComponent<TankManager>();
-        tankManager.SetTank();
+    /*    tankManager = GameObject.FindGameObjectWithTag("TankManager").GetComponent<TankManager>();
+        tankManager.SetTank();*/
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-         time += Time.deltaTime;
-        if(time<3)
+        if(shield!=null)
         {
-            shield1.transform.position = gameObject.transform.position;
-            _tank.Hp = 10;
-        }    
+            time += Time.deltaTime;
+            if (time < 3)
+            {
+                shield1.transform.position = gameObject.transform.position;
+                _tank.Hp = 10;
+            }
+        }
 
-   
+
+
 
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
