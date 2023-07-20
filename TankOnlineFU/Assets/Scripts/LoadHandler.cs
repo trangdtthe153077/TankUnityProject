@@ -3,19 +3,20 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.IO;
 
 public class LoadHandler : MonoBehaviour
 {
     Dictionary<string, Tilemap> tilemaps = new Dictionary<string, Tilemap>();
 
     [SerializeField] BoundsInt bounds;
-    [SerializeField] string filename = "tilemapData.json";
+    [SerializeField] string filename;
 
     private void Start()
     {
         InitTilemaps();
         // InitTileReferences();
-        OnLoad();
+        OnLoad(DropdownManager.selectedFileName);
     }
 
     private void InitTilemaps()
@@ -34,25 +35,28 @@ public class LoadHandler : MonoBehaviour
     }
 
 
-    public void OnLoad()
+    public void OnLoad(string filename)
     {
+        //string path = Path.Combine(Application.persistentDataPath, filename);
+
         // Clear all tilemaps first
         foreach (var map in tilemaps.Values)
         {
             map.ClearAllTiles();
         }
+
         List<TilemapData> data = FileHandler.ReadListFromJSON<TilemapData>(filename);
 
         foreach (var mapData in data)
         {
-            // if key does NOT exist in dictionary skip it
+            // if key does NOT exist in dictionary, skip it
             if (!tilemaps.ContainsKey(mapData.key))
             {
                 Debug.LogError("Found saved data for tilemap called '" + mapData.key + "', but Tilemap does not exist in scene.");
                 continue;
             }
 
-            // get according map
+            // get corresponding map
             var map = tilemaps[mapData.key];
 
             // clear map
@@ -63,7 +67,6 @@ public class LoadHandler : MonoBehaviour
                 foreach (TileInfo tile in mapData.tiles)
                 {
                     map.SetTile(tile.position, tile.tile);
-                    //Debug.LogError("position: " + tile.position + ", tile: "+ tile.tile);
                 }
             }
         }
