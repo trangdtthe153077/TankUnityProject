@@ -20,6 +20,7 @@ public class TankController : MonoBehaviour
     private SpriteRenderer _renderer;
     public new GameObject camera;
 
+    public TankManager tankManager;
     private void Start()
     {
         _tank = new Tank
@@ -39,7 +40,8 @@ public class TankController : MonoBehaviour
         _tankMover = gameObject.GetComponent<TankMover>();
         _cameraController = camera.GetComponent<CameraController>();
         _renderer = gameObject.GetComponent<SpriteRenderer>();
-  
+        tankManager = GameObject.FindObjectOfType<TankManager>();
+        tankManager.SetTank();
     }
 
     // Update is called once per frame
