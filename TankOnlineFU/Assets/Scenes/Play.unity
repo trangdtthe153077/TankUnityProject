@@ -474,6 +474,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 658675346, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 7752058176710613855, guid: 63698956eec74f64aa927c5c62dde463, type: 3}
     - target: {fileID: 684932452, guid: a77168ab521034ef8b7b80b9dd64708e, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -647,7 +651,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 1.9711139
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1397,13 +1401,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369449567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e172598a1870bf43955c71c3c524496, type: 3}
+  m_Script: {fileID: 11500000, guid: c2ac8739e801e714f848803380ca3093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bounds:
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Size: {x: 0, y: 0, z: 0}
-  filename: 
+    m_Position: {x: -13, y: -7, z: 0}
+    m_Size: {x: 26, y: 14, z: 0}
+  filename: tilemapData.json
 --- !u!114 &1369449571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8772,7 +8776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe73079010170cd43a08d8c470fbf0a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currnetGold: 0
   goldtxext: {fileID: 1675529327}
 --- !u!1 &2034241504
 GameObject:
@@ -8835,6 +8838,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2133916921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2133916923}
+  - component: {fileID: 2133916922}
+  m_Layer: 0
+  m_Name: TankManager
+  m_TagString: TankManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2133916922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133916921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb70fe64c52b24448724cc54c37bd74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tank1: {fileID: 0}
+  tank2: {fileID: 0}
+  tank3: {fileID: 0}
+  tank4: {fileID: 0}
+  tankUp1: {fileID: 21300000, guid: 597d324e804e74f468e8919f5cc5b9b3, type: 3}
+  tankUp2: {fileID: 21300000, guid: 4dd59f9952bbe4b8db9e24b01183e252, type: 3}
+  tankUp3: {fileID: 21300000, guid: 1ab8eef72fab54bdc914284688528d08, type: 3}
+  tankUp4: {fileID: 21300000, guid: 4c1e5459b1ca83b41ad61bb1716a139b, type: 3}
+  tankDown1: {fileID: 21300000, guid: 139a1d57628664ff497a14dacc07d618, type: 3}
+  tankDown2: {fileID: 21300000, guid: d526c8d5df352460bb261cabe3e94852, type: 3}
+  tankDown3: {fileID: 21300000, guid: 3f053b7c72ff84dfeabdfc1c692485a7, type: 3}
+  tankDown4: {fileID: 21300000, guid: 4c1e5459b1ca83b41ad61bb1716a139b, type: 3}
+  tankLeft1: {fileID: 21300000, guid: a6a74976a98b64a749471043d7f4763a, type: 3}
+  tankLeft2: {fileID: 21300000, guid: 04efb2565cc3a4243add8aa52b21a0f7, type: 3}
+  tankLeft3: {fileID: 21300000, guid: 873d7a99b817f41ad9870d7096614078, type: 3}
+  tankLeft4: {fileID: 21300000, guid: 4c1e5459b1ca83b41ad61bb1716a139b, type: 3}
+  tankRight1: {fileID: 21300000, guid: 90742d90b3f7740e2bfa6f544de3200f, type: 3}
+  tankRight2: {fileID: 21300000, guid: 3396d79bfb3d244f8ae6d20076e408c3, type: 3}
+  tankRight3: {fileID: 21300000, guid: 06e20e73b8ada4b39bdb51a91f0c055f, type: 3}
+  tankRight4: {fileID: 21300000, guid: 4c1e5459b1ca83b41ad61bb1716a139b, type: 3}
+  controller: {fileID: 0}
+--- !u!4 &2133916923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133916921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.769302, y: 1.3796997, z: 29.574818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8626941400454214075
 PrefabInstance:

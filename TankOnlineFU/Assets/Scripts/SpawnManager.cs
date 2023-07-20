@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     [HideInInspector] public int liveEnemy;
     [HideInInspector] public float bulletTime;
 
-    const int totalEnemy = 20;
+    const int totalEnemy = 15;
     int[] enemyTanks = { 5, 5, 5, 5 };
     int[] enemyQueue = new int[totalEnemy];
 
@@ -59,7 +59,7 @@ public class SpawnManager : MonoBehaviour
         /*     bulletTime -= Time.deltaTime;*/
         SpawnEnemyTank();
         countTime += Time.deltaTime;
-        if(countTime > 5f)
+        if(countTime > 3f)
         {
             born = true;
 
@@ -79,7 +79,7 @@ public class SpawnManager : MonoBehaviour
         }    
 
 
-        while (liveEnemy < 4 && enemyBorn < totalEnemy)
+        if (enemyBorn < totalEnemy)
         {
             //print("Tank No " + enemyBorn + " type " + enemyQueue[enemyBorn] + " born at " + enemyBorn % 3);
             
@@ -87,20 +87,24 @@ public class SpawnManager : MonoBehaviour
             {
                 var a = Instantiate(enemy, RandomTransform(), Quaternion.identity);
                 countTime = 0;
+                enemyBorn++;
                 born = false;
+            
             }
-
-            /*    a.transform.position = RandomTransform().positions;*/
+           
             liveEnemy++;
-            enemyBorn++;
-         
-        
-        }
 
-        if (liveEnemy == 0 && enemyBorn == totalEnemy)
+
+
+
+        }
+        else
         {
             WinGame();
-        }
+        }    
+
+           
+        
     }
 
     public Vector3 RandomTransform()

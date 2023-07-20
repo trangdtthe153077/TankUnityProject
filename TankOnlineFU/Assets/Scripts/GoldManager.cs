@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class GoldManager : MonoBehaviour
 {
-    public int currnetGold;
+    public static int currnetGold;
     public TextMeshProUGUI goldtxext;
     // Start is called before the first frame update
     void Start()
     {
-        currnetGold = 0;
+        currnetGold = 500;
     }
 
     // Update is called once per frame

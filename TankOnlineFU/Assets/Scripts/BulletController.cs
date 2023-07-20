@@ -173,6 +173,7 @@ public class BulletController : MonoBehaviour
                 Debug.Log("Quai chet");
                 Destroy(collision.gameObject);
                 spawnManager.liveEnemy -= 1;
+                    Debug.Log("Live enemy: " + spawnManager.liveEnemy);
             }
 
             }
